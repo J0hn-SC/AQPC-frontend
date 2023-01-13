@@ -1,6 +1,7 @@
 import React from 'react'
 import imagen from '../../helpers/images/tarjeta_grafica_logo.png'
 const Producto = (props) => {
+  
   return (
     <div className='container-md'>
         <hr></hr>
