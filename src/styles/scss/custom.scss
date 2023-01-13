@@ -1,0 +1,25 @@
+
+$primary: #F400FF;
+$secondary: #DE4FE2;
+$success: #BA47BE;
+$danger: #963B9A;
+$warning: #FA55FF;
+$info: #FCB1FF;
+
+body {
+	font-family: "Lato", sans-serif;
+}
+
+.title {
+    font-family: serif;
+    font-size: 24px;
+}
+
+.numbers {
+    font-family: "Flexo", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
