@@ -1,6 +1,6 @@
 import React from 'react'
 import imagen from '../../helpers/images/tarjeta_grafica_logo.png'
-const Producto = (props) => {
+const Product = (props) => {
   
   return (
     <div className='container-md'>
@@ -25,4 +25,4 @@ const Producto = (props) => {
   )
 }
 
-export default Producto
+export default Product

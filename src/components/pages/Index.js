@@ -13,7 +13,7 @@ const Index = () => {
             <Contact></Contact>
             <Header></Header>
         </header>
-        <nav className="d-flex justify-content-center py-0 bg-primary">
+        <nav className="d-flex justify-content-center py-0 color-1">
             <ul className="nav nav-pills ">
                 <li className="nav-item"><a href="https://www.facebook.com/" className="nav-link text-white px-5 py-3 title" aria-current="page">HOME</a></li>
                 <li className="nav-item"><a href="https://www.facebook.com/" className="nav-link text-white px-5 py-3 title">PROCESADORES</a></li>
@@ -25,7 +25,8 @@ const Index = () => {
         <Carousel></Carousel>
         <List></List>
         <hr className='mx-5'></hr>
-        <Map></Map>
+        {//<Map></Map>
+        }
         <Footer></Footer>
         
     </>

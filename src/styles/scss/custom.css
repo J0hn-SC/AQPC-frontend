@@ -4,14 +4,34 @@ body {
 }
 
 .title {
-  font-family: serif;
-  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.4em;
 }
 
-.numbers {
+.ltr-2 {
+  font-family: serif;
+}
+
+.price {
   font-family: "Flexo", sans-serif;
   font-weight: bold;
   font-style: normal;
+  font-size: 20px;
+}
+
+.color-1{
+  background: linear-gradient(145deg, rgb(188, 4, 199) 0%, rgb(89, 0, 155) 100%);
+  
+}
+
+.color-2{
+  background: linear-gradient(145deg, #FA90F6 0%, #BA47BE 100%);
+}
+
+.color-3{
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
 /*!

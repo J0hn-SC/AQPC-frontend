@@ -7,18 +7,26 @@ $warning: #FA55FF;
 $info: #FCB1FF;
 
 body {
-	font-family: "Lato", sans-serif;
+font-family: "Lato", sans-serif;
 }
-
+  
 .title {
-    font-family: serif;
-    font-size: 24px;
+font-family: "Montserrat", sans-serif;
+font-size: 19px;
+font-weight: 800;
+line-height: 1.4em;
 }
 
 .numbers {
-    font-family: "Flexo", sans-serif;
-    font-weight: bold;
-    font-style: normal;
+font-family: serif;
+font-size: 24px;
+}
+
+.price {
+font-family: "Flexo", sans-serif;
+font-weight: bold;
+font-style: normal;
+font-size: 20px;
 }
 
 @import '../../../node_modules/bootstrap/scss/bootstrap';
