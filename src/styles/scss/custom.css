@@ -34,6 +34,12 @@ body {
   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
+
+.dropdown-menu{
+  display: none;
+}
+.dropdown:hover .dropdown-menu {display: block;}
+
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

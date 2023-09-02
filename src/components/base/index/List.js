@@ -1,27 +1,70 @@
 import React, { useEffect, useState } from 'react'
 import CardProducto from './CardProduct'
-import imagen from './img/tarjeta1.jpg'
 import axios from 'axios'
-const List = () => {
+import Cookies from 'js-cookie'
+const List = (props) => {
   const [products,setProducts] = useState([])
+  //Obtener los productos marcados en cookies--------------------------
+  
+  let stringProducts = Cookies.get('products');
+  console.log("string cookies:",stringProducts)
+  let arrayProducts = []
+  if(stringProducts.length > 0){
+      arrayProducts = stringProducts.split(',');
+  }
+  
+
+  const add_product_shopping_cart = (product, index) => {
+    props.setContador(props.contador+1);
+    arrayProducts.push(product.id_product);
+    console.log("arrayProducts",arrayProducts);
+    products[index]['bought'] = true;
+    //añadir alas cookies
+    let stringProducts = Cookies.get('products');
+    if(stringProducts === ''){
+      Cookies.set('products',product.id_product);
+    }else{
+      Cookies.set('products', stringProducts+','+product.id_product);
+    }
+  }
+
+  const remove_product_shopping_cart = (product, index) => {
+    props.setContador(props.contador-1);
+    arrayProducts = arrayProducts.filter((ele)=>ele!==product.id_product.toString());
+    products[index]['bought'] = false;
+    let stringProducts = Cookies.get('products');
+    if(stringProducts === ''){
+      Cookies.set('products',product.id_product);
+    }else{
+      Cookies.set('products', arrayProducts);
+    }
+  }
+  
+  
   useEffect(()=>{
-    const getProducts = async () => {
+    const getAllProducts = async () => {
       try{
         let res = await axios.get("http://127.0.0.1:5000/api/get_all_product"),
-          json = await res.data
+          json = await res.data;
         console.log(json)
-        json.forEach((ele)=>{
-          setProducts(products => [...products, ele])
-          //products.push(ele)
-          //setProducts(products.push(ele))
+        json.forEach(key=>{
+          if(arrayProducts.includes(key.id_product.toString())){
+            key['bought'] = true;
+          }else{
+            key['bought'] = false;
+          }
         })
-        console.log("Soy products",products)
+        setProducts(json);
       }catch(e){
         console.log("Hubo un error")
       }
     }
-    getProducts();
+    getAllProducts();
+
   },[])
+
+  
+
   return (
     
       <div className='container-md my-5'>
@@ -29,10 +72,11 @@ const List = () => {
             <span className='title text-primary'>Computadoras ideales para el estudio</span>
         </div>
         <div className='d-flex flex-wrap mx-2'>
-            {console.log("filter")}
             {products.length===0?<h3>Cargando...</h3>:
-              products.map((ele)=>
-              <CardProducto key={ele.id_product} image={ele.image} naming={ele.naming} brand={ele.brand} price={ele.price} details={ele.details}></CardProducto>
+              products.map((ele,index)=>
+              <CardProducto key={ele.id_product} data={ele} index={index} addProductShopping={props.addProductShopping}
+              add_product_shopping_cart = {add_product_shopping_cart}
+              remove_product_shopping_cart = {remove_product_shopping_cart} ></CardProducto>
             )}
         </div>
         <div className='d-flex justify-content-center'>
